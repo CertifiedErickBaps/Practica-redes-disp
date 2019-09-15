@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Practica_redes_Erick</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Erick Bautista Pérez</string>
+    <string name="nav_header_subtitle">A01379896@itesm.mx</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Descargar Texto</string>
+    <string name="menu_gallery">Descargar Imagen</string>
+    <string name="menu_slideshow">Descargar Imagen</string>
+    <string name="menu_tools">Descargar Imagen</string>
+    <string name="menu_send">Descargar Imagen</string>
+    <string name="menu_share">Libros JSON</string>
+
+</resources>
