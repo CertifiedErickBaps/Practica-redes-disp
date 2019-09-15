@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_imagen"
-        android:name="mx.itesm.practica_redes_erick.ui.gallery.GalleryFragment"
+        android:name="mx.itesm.practica_redes_erick.ui.gallery.DescargaImagenFrag"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_descarga_imagen" />
 
     <fragment
         android:id="@+id/nav_slideshow"

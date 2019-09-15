@@ -1,5 +1,7 @@
 package mx.itesm.practica_redes_erick
 
+import android.app.ProgressDialog
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,11 +19,14 @@ import android.view.Menu
 import android.view.View
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.BitmapRequestListener
 import com.androidnetworking.interfaces.StringRequestListener
+import kotlinx.android.synthetic.main.fragment_descarga_imagen.*
 import kotlinx.android.synthetic.main.fragment_descarga_texto.*
 
 class MenuPrincipalActiv : AppCompatActivity() {
 
+    lateinit var dialogo: ProgressDialog
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,24 +58,41 @@ class MenuPrincipalActiv : AppCompatActivity() {
 
     private fun descargarTexto(view: View?) {
 
-
+        mostrarDialogoEspera()
         AndroidNetworking.get("https://www.gutenberg.org/cache/epub/2000/pg2000.txt")
             .build()
             .getAsString(object: StringRequestListener {
                 override fun onResponse(response: String?) {
                     tvTexto.text = response
+                    dialogo.dismiss()
 
                 }
 
                 override fun onError(anError: ANError?) {
                     tvTexto.text = "Error en la descarga"
+                    dialogo.dismiss()
                 }
 
             })
     }
 
+    private fun descargarImagen(view: View?) {
+
+        AndroidNetworking.get("https://upload.wikimedia.org/wikipedia/commons/d/dd/Big_%26_Small_Pumkins.JPG").build().getAsBitmap(object :
+            BitmapRequestListener {
+            override fun onResponse(response: Bitmap?) {
+                imgDescarga.setImageBitmap(response)
+            }
+
+            override fun onError(anError: ANError?) {
+            }
+        })
+
+    }
+
     override fun onStart() {
         super.onStart()
+        AndroidNetworking.initialize(baseContext)
         //Boton
         btnDescargarTexto.setOnClickListener { view: View? ->
             descargarTexto(view)
@@ -79,13 +101,20 @@ class MenuPrincipalActiv : AppCompatActivity() {
         //TextView
         tvTexto.movementMethod = ScrollingMovementMethod()
 
-        AndroidNetworking.initialize(baseContext)
-
-
-
+        btnDescargarImagen.setOnClickListener{ view ->  descargarImagen(view)}
 
     }
 
+
+
+    private fun mostrarDialogoEspera() {
+        this.dialogo = ProgressDialog(this)
+        dialogo.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        dialogo.setMessage("Descargando")
+        dialogo.isIndeterminate = true
+        dialogo.setCanceledOnTouchOutside(false)
+        dialogo.show()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

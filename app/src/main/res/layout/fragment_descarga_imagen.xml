@@ -6,40 +6,41 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textDescarga"
-        android:layout_width="0dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="16dp"
-        android:text="Descarga texto"
+        android:id="@+id/text_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Descarga imagen"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnDescargarTexto"
+        android:id="@+id/btnDescargarImagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="164dp"
-        android:text="DESCARGA TEXTO"
+        android:text="DESCARGA IMAGEN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDescarga" />
+        app:layout_constraintTop_toBottomOf="@+id/text_gallery" />
 
-    <TextView
-        android:id="@+id/tvTexto"
+    <ImageView
+        android:id="@+id/imgDescarga"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:scrollbars="vertical"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDescargarTexto" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDescargarImagen"
+        tools:srcCompat="@tools:sample/avatars[3]" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
